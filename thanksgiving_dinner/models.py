@@ -12,25 +12,35 @@ class Student(models.Model):
     email = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=255, blank=True, null=True)
-    interests = models.CharField(max_length=255, blank=True, null=True)
     university = models.CharField(max_length=255, blank=True, null=True)
     
     def __str__(self):
-        return "{0} ({1})".format(self.fullname, self.university)
+        return "{0} ({1}, {2})".format(self.fullname, self.university, self.country)
     
     class Meta:
         managed = True
         db_table = 'student'
         
+class Interest(models.Model):
+    student = models.ForeignKey("Student", blank=True, null=True, on_delete=models.CASCADE)
+    interest = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = 'interest'
+     
+    
+    def __str__(self):
+        return "{0} ({1})".format(self.interest, self.student)   
+     
+       
 class Host(models.Model):
-    host_id = models.AutoField(primary_key=True)
     fullname = models.CharField(max_length=255, blank=True, null=True)
     email = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     max_guests = models.IntegerField(default=5, blank=True, null=True)
     preference = models.CharField(max_length=255, blank=True, null=True)
-    role = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return "{0}".format(self.fullname, self.preference)   

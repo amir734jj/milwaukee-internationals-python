@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+
+{% block body %}
+	<h2>Welcome to Thanksgiving dinner website:</h2>
+	
+	<h3>admin page: <a href="/admin">/admin</a></h3>
+	
+	<pre>
+	+----------+--------------------------------------------------+-------------------------------------------+
+	|  method  |                       path                       |            action description             |
+	+----------+--------------------------------------------------+-------------------------------------------+
+	| GET/POST | student/                                         | get all students list or add new student  |
+	| GET      | student/all                                      | get all student list with their host info |
+	| GET      | student/:id                                      | get student by id                         |
+	| GET      | student/:id/host                                 | get host of specific student              |
+	|          |                                                  |                                           |
+	| GET/POST | host/                                            | get all hosts list or add new host        |
+	| GET      | host/all get all host list with their students   |                                           |
+	| GET      | host/:id get host by id                          |                                           |
+	| GET      | host/:id:/students get students of specific host |                                           |
+	+----------+--------------------------------------------------+-------------------------------------------+
+	</pre>
+	
+{% endblock %}
